@@ -7,7 +7,7 @@ import { Button } from '../Button';
 export function Header() {
   const dispatch = useDispatch();
 
-  const { isAuth, email } = useAuth();
+  const { isAuth } = useAuth();
   return (
     <header className={style.header} id="header">
       <h1 className={style.gameName}>МАФІЯ</h1>

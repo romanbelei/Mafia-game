@@ -1,13 +1,13 @@
 import { Redirect } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+// import { useDispatch } from 'react-redux';
 import { useAuth } from 'hooks/use-auth';
-import { removeUser } from 'store/slices/userSlice';
+// import { removeUser } from 'store/slices/userSlice';
 import { Header } from '../components/Header';
 
 const HomePage = () => {
-  const dispatch = useDispatch();
+  //   const dispatch = useDispatch();
 
-  const { isAuth, email } = useAuth();
+  const { isAuth } = useAuth();
 
   return isAuth ? (
     <div>
