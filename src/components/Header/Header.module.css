@@ -1,7 +1,7 @@
 .header {
   /* padding-right: 10px; */
   display: flex;
-  justify-content:flex-end;
+  justify-content: flex-end;
   align-items: center;
   height: 60px;
   width: 100%;
@@ -20,11 +20,11 @@
 .singIn {
   width: 65px;
   height: 20px;
-  margin-right: 20px;
+  /* margin-right: 20px; */
 }
 
-.singUp {
-  width: 125px;
+.singOut {
+  width: auto;
   height: 20px;
   margin-right: 10px;
 }

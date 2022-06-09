@@ -23,9 +23,10 @@ body {
   margin: 0 auto;
 }
 
-.p {
+p {
   color: #bf1650;
-  text-align: center;
+  text-align: left;
+  font-size: 20px;
 }
 
 textarea,
@@ -59,7 +60,7 @@ section > label {
 input[type='submit'],
 .button {
   position: relative;
-  background: #ec5990;
+  background: rgb(161, 6, 6);
   color: white;
   text-transform: uppercase;
   border: none;
@@ -105,7 +106,7 @@ input[type='submit'],
   z-index: 9999999;
 }
 
-button[type='button'] {
+/* button[type='button'] {
   padding: 5px;
   background: #516391;
   color: white;
@@ -113,17 +114,20 @@ button[type='button'] {
   text-transform: none;
   padding: 10px;
   letter-spacing: 1px;
-}
+} */
 
 input[type='submit']:hover,
 button[type='button']:hover {
-  background: #bf1650;
+  background: #f16193;
   color: white;
 }
 
 input[type='submit']:active {
   transition: 0.3s all;
   top: 2px;
+}
+input[type='submit']:disabled {
+  background: #ccc;
 }
 
 .preact {

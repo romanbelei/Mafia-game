@@ -9,7 +9,7 @@ import './firebase';
 
 ReactDOM.render(
   <React.StrictMode>
-    <BrowserRouter>
+    <BrowserRouter basename="Mafia-game">
       <Provider store={store}>
         <App />
       </Provider>

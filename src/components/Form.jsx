@@ -3,10 +3,16 @@ import { useForm } from 'react-hook-form';
 const Form = ({ handleClick }) => {
   const {
     register,
-    formState: { errors },
+    formState: { errors, isValid },
     handleSubmit,
     reset,
-  } = useForm({ mode: 'onBlur' });
+  } = useForm({
+    mode: 'onChange',
+    defaultValues: {
+      email: 'bly@ukr.net',
+      password: 112233,
+    },
+  });
   const onSubmit = data => {
     handleClick(data.email, data.password);
     reset();
@@ -14,11 +20,12 @@ const Form = ({ handleClick }) => {
   return (
     <div className="App">
       <form onSubmit={handleSubmit(onSubmit)}>
-        <label>
+        <label className="label">
           Email:
           <input
+            type="email"
             {...register('email', {
-              required: " поле обов'язкове до заповнення",
+              required: " поле обов'язкове до заповнення!",
             })}
           />
         </label>
@@ -26,18 +33,22 @@ const Form = ({ handleClick }) => {
           {errors?.email && <p>{errors?.email?.message || 'Error!'}</p>}
         </div>
 
-        <label>
+        <label className="label">
           Password:
           <input
             {...register('password', {
-              required: " поле обов'язкове до заповнення",
+              required: " поле обов'язкове до заповнення!",
+              validate: value => value.length > 5,
             })}
           />
         </label>
         <div style={{ height: 40 }}>
-          {errors?.password && <p>{errors?.passsword?.message || 'Error!'}</p>}
+          {errors?.password && <p>Мінімум 6 символів!</p>}
         </div>
-        <input type="submit" />
+        <input
+          type="submit"
+          //   disabled={!isValid}
+        />
       </form>
     </div>
   );

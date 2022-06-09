@@ -13,7 +13,7 @@ export function Header() {
       <h1 className={style.gameName}>МАФІЯ</h1>
       {isAuth && (
         <Button
-          name={style.singUp}
+          name={style.singOut}
           text="Вийти"
           onClick={() => dispatch(removeUser())}
         />
