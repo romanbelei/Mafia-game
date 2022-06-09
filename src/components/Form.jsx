@@ -45,10 +45,7 @@ const Form = ({ handleClick }) => {
         <div style={{ height: 40 }}>
           {errors?.password && <p>Мінімум 6 символів!</p>}
         </div>
-        <input
-          type="submit"
-          //   disabled={!isValid}
-        />
+        <input type="submit" disabled={!isValid} />
       </form>
     </div>
   );

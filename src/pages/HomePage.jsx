@@ -8,8 +8,8 @@ import { Header } from '../components/Header';
 import { Link } from 'react-router-dom';
 import {
   getFirestore,
-  doc,
-  onSnapshot,
+  //   doc,
+  //   onSnapshot,
   collection,
   getDocs,
 } from 'firebase/firestore';

@@ -127,10 +127,7 @@ const СreateTable = () => {
         {errors.age && errors.age.type === 'positiveNumber' && (
           <p>Невірне число</p>
         )}
-        <input
-          type="submit"
-          // disabled={!isValid}
-        />
+        <input type="submit" disabled={!isValid} />
       </form>
     </div>
   );
