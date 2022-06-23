@@ -17,6 +17,12 @@ body {
   font-size: 25px;
   padding-bottom: 0px;
 }
+h2 {
+  /* margin-top: 80px; */
+  color: #bf1650;
+  /* font-size: 25px;
+  padding-bottom: 0px; */
+}
 
 .form {
   max-width: 800px;
@@ -137,4 +143,25 @@ input[type='submit']:disabled {
 
 .preact:hover {
   opacity: 1;
+}
+
+.tables {
+  display: flex;
+  justify-content: space-between;
+  background-color: #fff;
+  border: 1px solid rgb(161, 6, 6);
+  border-radius: 4px;
+  margin-bottom: 10px;
+  padding-left: 10px;
+  min-height: 30px;
+}
+
+.buttonDelete {
+  width: auto;
+  height: 30px;
+  background-color: rgb(161, 6, 6);
+  color: #fff;
+  margin-top: auto;
+  margin-bottom: auto;
+  margin-right: 10px;
 }

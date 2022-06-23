@@ -1,13 +1,29 @@
+import { useDispatch } from 'react-redux';
+// import { setMyNameTables } from '../store/slices/tablesSlice';
 import { useForm } from 'react-hook-form';
-import { getFirestore, doc, setDoc } from 'firebase/firestore';
+import {
+  getFirestore,
+  doc,
+  // getDocs,
+  setDoc,
+  getDoc,
+  // collection,
+  // deleteDoc,
+} from 'firebase/firestore';
 import { app } from '../firebase';
 import { useHistory } from 'react-router-dom';
-// import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
+import { useAuth } from 'hooks/use-auth';
+import { useTables } from 'hooks/use-tables';
+import React, { useState } from 'react';
+import { Report } from 'notiflix/build/notiflix-report-aio';
 
 const db = getFirestore(app);
 
 const СreateTable = () => {
   const { push } = useHistory();
+  const { id } = useAuth();
+  const { tables, myTableName } = useTables();
+  const dispatch = useDispatch();
 
   const {
     register,
@@ -27,21 +43,37 @@ const СreateTable = () => {
   });
 
   const onSubmit = data => {
-    console.log(data.name);
-    setDoc(doc(db, 'table', data.name), {
-      name: data.name,
-      password: data.password,
-      users: [],
-      role: [],
-      count: {
-        mafia: data.mafia,
-        doctor: data.doctor,
-        sherif: data.sherif,
-        peace: data.peace,
-      },
-    });
-    reset();
-    push('/');
+    console.log(!myTableName);
+    console.log(myTableName);
+    if (!myTableName && tables.includes(data.name)) {
+      //якщо мого стола немає то перевіряємо чи є вже таке ім'я
+      Report.failure(
+        `Стіл з таким іменем вже існує. Введіть інше ім'я.`,
+        ``,
+        `Ok`
+      );
+    } else {
+      if (myTableName && data.name !== myTableName) {
+        //якщо мій стіл є то перевіряємо чи введене ім'я не= ім'ю мого стола
+        Report.failure(`Введіть ім'я свого стола.`, ``, `Ok`);
+      } else {
+        setDoc(doc(db, 'table', data.name), {
+          userId: id,
+          name: data.name,
+          password: data.password,
+          users: [],
+          role: [],
+          count: {
+            mafia: data.mafia,
+            doctor: data.doctor,
+            sherif: data.sherif,
+            peace: data.peace,
+          },
+        });
+        reset();
+        push('/');
+      }
+    }
   };
 
   return (
@@ -67,10 +99,7 @@ const СreateTable = () => {
             })}
           />
         </label>
-        {/* <div style={{ height: 40 }}> */}
         {errors?.password && <p>Мінімум 6 символів!</p>}
-        {/* </div> */}
-
         <label className="label">
           Мафія:
           <input
